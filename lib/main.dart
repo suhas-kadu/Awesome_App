@@ -13,11 +13,11 @@ void main() {
 
   runApp(MaterialApp(
     debugShowCheckedModeBanner: false,
-    home: HomePage(), 
+    home: HomePage(),
     theme: ThemeData(
       primarySwatch: Colors.green,
     ),
-    ));
+  ));
 }
 
 class HomePage extends StatelessWidget {
