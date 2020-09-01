@@ -29,30 +29,73 @@ class HomePage extends StatelessWidget {
       ),
       body: Center(
         child: Container(
-          decoration: BoxDecoration(
-            color: Colors.red,
-            gradient: LinearGradient(
-              colors: [
-                Colors.yellow,
-                Colors.green,
-              ],
-            ),
-            //shape: BoxShape.circle,
-            borderRadius: BorderRadius.circular(15),
-          ),
-          padding: const EdgeInsets.all(20),
-          height: 100,
-          width: 100,
-          clipBehavior: Clip.antiAlias,
+          margin: EdgeInsets.all(20),
+          height: 300,
+          width: 400,
+          color: Colors.blue,
           alignment: Alignment.center,
-          child: Text(
-            "I'm a box",
-            style: TextStyle(
-              fontWeight: FontWeight.bold,
-              color: Colors.white,
-              fontSize: 20,
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceEvenly, //spaceAround,//spaceBetween,//center,//end,//start
+            crossAxisAlignment: CrossAxisAlignment.center,
+            children: <Widget>[
+            Container(
+            color: Colors.red,
+            padding: const EdgeInsets.all(20),
+            height: 100,
+            width: 100,
+            alignment: Alignment.center,
+            child: Text(
+              "I'm a box",
+              style: TextStyle(
+                fontWeight: FontWeight.bold,
+                color: Colors.white,
+                fontSize: 20,
+              ),
+              textAlign: TextAlign.center,
             ),
-            textAlign: TextAlign.center,
+          ),
+          
+           Container(
+            color: Colors.green,
+            padding: const EdgeInsets.all(20),
+            height: 100,
+            width: 100,
+            alignment: Alignment.center,
+            child: Text(
+              "I'm a box",
+              style: TextStyle(
+                fontWeight: FontWeight.bold,
+                color: Colors.white,
+                fontSize: 20,
+              ),
+              textAlign: TextAlign.center,
+            ),
+          ),
+
+           Container(
+            color: Colors.yellow,
+            padding: const EdgeInsets.all(20),
+            height: 100,
+            width: 100,
+            alignment: Alignment.center,
+            child: Text(
+              "I'm a box",
+              style: TextStyle(
+                fontWeight: FontWeight.bold,
+                color: Colors.white,
+                fontSize: 20,
+              ),
+              textAlign: TextAlign.center,
+            ),
+          ),
+
+
+            ],
+
+          
+
+
+
           ),
         ),
       ),
