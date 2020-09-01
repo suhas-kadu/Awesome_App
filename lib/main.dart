@@ -33,8 +33,8 @@ class HomePage extends StatelessWidget {
             color: Colors.red,
             gradient: LinearGradient(
               colors: [
-                Colors.yellowAccent,
-                Colors.blueAccent,
+                Colors.yellow,
+                Colors.green,
               ],
             ),
             //shape: BoxShape.circle,
