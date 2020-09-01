@@ -30,11 +30,11 @@ class HomePage extends StatelessWidget {
       body: Center(
         child: Container(
           margin: EdgeInsets.all(20),
-          height: 300,
+          height: 400,
           width: 400,
           color: Colors.blue,
           alignment: Alignment.center,
-          child: Row(
+          child: Column(
             mainAxisAlignment: MainAxisAlignment.spaceEvenly, //spaceAround,//spaceBetween,//center,//end,//start
             crossAxisAlignment: CrossAxisAlignment.center,
             children: <Widget>[
