@@ -24,29 +24,73 @@ void main() {
   ));
 }
 
-class HomePage extends StatelessWidget {
+class HomePage extends StatefulWidget {
+  @override
+  _HomePageState createState() => _HomePageState();
+}
+
+class _HomePageState extends State<HomePage> {
+  var myText = "Change my Name";
+  TextEditingController _namecontroller = new TextEditingController();
+
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    myText = "Change my Name";
+  }
+
+  @override
+  void dispose() {
+    // TODO: implement dispose
+    super.dispose();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.grey[200],
       appBar: AppBar(
         title: Text('Awesome App'),
       ),
       body: Center(
-        child: Container(
-          color: Colors.red,
-          height: 100,
-          width: 100,
-          alignment: Alignment.center,
-          child: Text(
-            "I'm a Container",
-            style: TextStyle(
-              fontSize: 20,
-              color: Colors.white,
-            ),
-            textAlign: TextAlign.center,
-          ),
+          child: Padding(
+        padding: const EdgeInsets.all(15.0),
+        child: SingleChildScrollView(
+          child: Card(
+              child: Column(
+            children: <Widget>[
+              Image.asset(
+                "assets/img.png",
+                //width: 200,
+                //height: 200,
+                //fit: BoxFit.contain,
+              ),
+              SizedBox(
+                height: 20,
+              ),
+              Text(
+                myText,
+                style: TextStyle(
+                  fontSize: 20,
+                  fontWeight: FontWeight.bold,
+                ),
+              ),
+              Padding(
+                padding: const EdgeInsets.all(16.0),
+                child: TextField(
+                  controller: _namecontroller,
+                  decoration: InputDecoration(
+                    border: OutlineInputBorder(),
+                    hintText: "Enter your name",
+                    labelText: "Name",
+                  ),
+                ),
+              ),
+            ],
+          )),
         ),
-      ),
+      )),
 
       drawer: Drawer(
         child: ListView(
@@ -65,7 +109,7 @@ class HomePage extends StatelessWidget {
               title: Text("Brie Larson"),
               subtitle: Text("Actor"),
               trailing: Icon(Icons.edit),
-              onTap: (){},
+              onTap: () {},
             ),
             ListTile(
               leading: Icon(Icons.email),
@@ -80,8 +124,11 @@ class HomePage extends StatelessWidget {
 
       //FloatingActionButton
       floatingActionButton: FloatingActionButton(
-        onPressed: () {},
-        child: Icon(Icons.edit),
+        onPressed: () {
+          myText = _namecontroller.text;
+          setState(() {});
+        },
+        child: Icon(Icons.send),
         elevation: 5,
         //mini: true,
         backgroundColor: Colors.green,
@@ -89,7 +136,6 @@ class HomePage extends StatelessWidget {
         hoverElevation: 5,
       ),
 
-    
       //floatingActionButtonLocation: FloatingActionButtonLocation.endFloat,
     );
   }
