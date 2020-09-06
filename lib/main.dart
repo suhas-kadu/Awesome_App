@@ -1,10 +1,5 @@
-//import 'dart:html';
-
-//import 'dart:html';
-
-import 'package:awesome_app/drawer.dart';
-import 'package:awesome_app/namecardwidget.dart';
-import 'package:awesome_app/home_page.dart';
+import 'file:///E:/Projects/awesome_app/pages/login_page.dart';
+import 'file:///E:/Projects/awesome_app/pages/home_page.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
@@ -25,12 +20,16 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-    debugShowCheckedModeBanner: false,
-    home: HomePage(),
-    theme: ThemeData(
-      primarySwatch: Colors.green,
-    ),
-  );
+      debugShowCheckedModeBanner: false,
+      home: LoginPage(),
+      theme: ThemeData(
+        primarySwatch: Colors.green,
+      ),
+      routes: {
+        LoginPage.routeName : (context)=>LoginPage(),
+        HomePage.routeName : (context)=>HomePage(),
+        
+      },
+    );
   }
 }
-
