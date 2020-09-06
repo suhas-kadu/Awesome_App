@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:awesome_app/drawer.dart';
-import 'package:awesome_app/namecardwidget.dart';
+import 'package:http/http.dart' as http;
+import 'dart:convert';
 
 class HomePage extends StatefulWidget {
   @override
@@ -8,19 +9,30 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
-  var myText = "Change my Name";
-  TextEditingController _namecontroller = new TextEditingController();
+//  var myText = "Change my Name";
+//  TextEditingController _namecontroller = new TextEditingController();
+
+  var url = "https://jsonplaceholder.typicode.com/photos";
+  var data;
 
   @override
   void initState() {
-   
     super.initState();
-    myText = "Change my Name";
+    //myText = "Change my Name";
+    fetchData();
+  }
+
+  fetchData() async {
+    var res = await http.get(url);
+    //print(res.body);
+    data = jsonDecode(res.body);
+    setState(() {
+      print(data);
+    });
   }
 
   @override
   void dispose() {
-    
     super.dispose();
   }
 
@@ -31,20 +43,27 @@ class _HomePageState extends State<HomePage> {
       appBar: AppBar(
         title: Text('Awesome App'),
       ),
-      body: Center(
-          child: Padding(
-        padding: const EdgeInsets.all(15.0),
-        child: SingleChildScrollView(
-          child: NameCardWidget(myText: myText, namecontroller: _namecontroller),
-        ),
-      ),
-      ),
+      body: data != null
+          ? ListView.builder(
+              itemBuilder: (context, index) {
+                return ListTile(
+                  title: Text(data[index]["title"]),
+                  subtitle: Text("ID: ${data[index]["id"]}"),
+                  leading: Image.network(data[index]["thumbnailUrl"]),
+                  
+                );
+              },
+              itemCount: data.length,
+            )
+          : Center(
+              child: CircularProgressIndicator(),
+            ),
 
-     drawer: MyDrawer(),
+      drawer: MyDrawer(),
       //FloatingActionButton
       floatingActionButton: FloatingActionButton(
         onPressed: () {
-          myText = _namecontroller.text;
+          //myText = _namecontroller.text;
           setState(() {});
         },
         child: Icon(Icons.send),
